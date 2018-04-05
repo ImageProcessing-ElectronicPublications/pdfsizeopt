@@ -3190,8 +3190,8 @@ class PdfObj(object):
     palette_mod = len(palette) % 3
     # Some buggy PDF generators create a palette which is 1 byte longer.
     # For testing palette_mod == 1: /mnt/mandel/warez/tmp/vrabimintest2.pdf
-    assert palette_mod == 0 or (palette_mod == 1 and palette[-1] == '\n'), (
-        'invalid palette size: %s' % palette_size)
+    # assert palette_mod == 0 or (palette_mod == 1 and palette[-1] == '\n'), (
+    #     'invalid palette size: %s' % palette_size)
     return palette_size - palette_mod
 
   # !!! Do proper PDF token sequence parsing (ParseTokensToSafe).
