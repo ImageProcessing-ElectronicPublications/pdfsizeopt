@@ -7725,6 +7725,12 @@ class PdfData(object):
             cmd_name = GetCmdName(cmd_pattern)
             if not cmd_name or cmd_name in ('sam2p_pr', 'sam2p_np'):
               continue
+            # We skip compressing black-and-white images with compressors
+            # other than jbig2, since they usually (always in my experience)
+            # lose in compression and they take *waaaaay* too much time,
+            # especially if we have color images that we want optimized highly.
+            if ('jbig2' not in cmd_name) and (obj_images[-1][1].bpc == 1):
+              continue
             if cmd_name in cmd_names_used:
               i = 2
               while 1:
