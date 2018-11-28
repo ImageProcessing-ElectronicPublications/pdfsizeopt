@@ -6176,8 +6176,28 @@ class PdfData(object):
     # !! TODO(pts): Do proper check for FontMatrix floats.
     # We ignore FontInfo and UniqueID.
     for key in ('FontMatrix', 'PaintType'):
+
+      # print(' ********************** Original type of target_font: %s' % type(target_font[key]))
+      # print(' ********************** Original type of source_font: %s' % type(source_font[key]))
+
+      if isinstance(target_font[key], list):
+
+        target_font[key] = map(float, target_font[key])
+        source_font[key] = map(float, source_font[key])
+
+        # Kludges
+        target_font[key] = [round(x, 5) for x in target_font[key]]
+        source_font[key] = [round(x, 5) for x in source_font[key]]
+
+        # print(' ********************** Original value of target_font: %s' % target_font[key])
+        # print(' ********************** Original value of source_font: %s' % source_font[key])
+
+        # print(' ********************** New type of target_font: %s' % type(target_font[key]))
+        # print(' ********************** New type of source_font: %s' % type(source_font[key]))
+
       target_value = target_font[key]
       source_value = source_font[key]
+
       if target_value != source_value:
         raise FontsNotMergeable(
             'mismatch in key %s: target=%r source=%r' %
