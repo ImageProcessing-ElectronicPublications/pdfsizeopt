@@ -7618,7 +7618,7 @@ class PdfData(object):
                 (oi_image.file_name or '').endswith('.png')):
           oi_image = ImageData(oi_image)
           oi_image.CompressToZipPng(
-              do_try_invert=oi_image.is_inverted, effort=3)
+              do_try_invert=oi_image.is_inverted, effort=9)
           oi_image.SavePng(
               file_name=TMP_PREFIX + 'img-%d.save-oi.png' % obj_num,
               do_force_gray=True)
@@ -7710,7 +7710,7 @@ class PdfData(object):
             #            temporary .png?
             obj_images.append(('save_oi', ImageData(np_image)
                 .CompressToZipPng(do_try_invert=np_image.is_inverted,
-                                  effort=(9 - 6 * do_save_oi_fast))
+                                  effort=9)
                 .SavePng(file_name=TMP_PREFIX + 'img-%d.save-oi.png' % obj_num)
                 ))
             np_image = None  # Save memory reference.
