@@ -7631,7 +7631,16 @@ class PdfData(object):
                 oi_image, cmd_name, cmd_pattern, obj_num, 'gray'))
         oi_image = None  # Save memory later.
         for _, old_image in obj_images[:obj_images_size]:
-          os.remove(old_image.file_name)
+
+          if old_image:
+            if old_image.file_name:
+              os.remove(old_image.file_name)
+            else:
+              print("******* old_image is of type <%s>, but old_image.file_name is of type <%s>" % (type(old_image), type(old_image.file_name)))
+          else:
+            print("******* old_image is of type <%s>" % type(old_image))
+
+
         old_image = None   # Save memory.
         image_tuple = rendered_tuple  # No more caching, just pacity.
       else:
