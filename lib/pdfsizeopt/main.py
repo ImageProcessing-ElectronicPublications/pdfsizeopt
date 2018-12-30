@@ -9402,6 +9402,8 @@ IMAGE_OPTIMIZER_CMD_MAP = {
 
     'pngout2': 'pngout %(pngout_gray_flags)s%(sourcefnq)s %(targetfnq)s; advpng -z4 %(targetfnq)s; advdef -z4 %(targetfnq)s',
     'pngout3': 'pngout %(pngout_gray_flags)s%(sourcefnq)s %(targetfnq)s; advpng -z3 %(targetfnq)s; advdef -z3 %(targetfnq)s; advdef -z4 %(targetfnq)s',
+
+    'pingo': 'pingo -lossless -s9 -verbose=3 %(targetfnq)s',
 }
 
 def GetVersionSpec(zip_file):
