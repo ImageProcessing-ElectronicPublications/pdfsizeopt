@@ -7640,7 +7640,6 @@ class PdfData(object):
           else:
             print("******* old_image is of type <%s>" % type(old_image))
 
-
         old_image = None   # Save memory.
         image_tuple = rendered_tuple  # No more caching, just pacity.
       else:
