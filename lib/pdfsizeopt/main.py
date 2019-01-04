@@ -9179,7 +9179,6 @@ class PdfData(object):
     # * Don't add -jpeg, it introduces lossy compression.
     # * Don't add -subset, it's expreimental.
     # * FYI http://code.google.com/p/pdfsizeopt/issues/detail?id=30 .
-    # multivalent_flags = '-nopagepiece -noalt -mon -nowebcap -nostruct'
     multivalent_flags = '-nopagepiece -noalt -mon -nowebcap -nostruct'
 
     # TODO(pts): Work around exception for emptypage.pdf:
