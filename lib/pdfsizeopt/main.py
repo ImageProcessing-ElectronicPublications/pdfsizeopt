@@ -9423,11 +9423,17 @@ IMAGE_OPTIMIZER_CMD_MAP = {
     'rbrito':  'optipng %(sourcefnq)s -o4 -fix -force %(optipng_gray_flags)s-out %(targetfnq)s; advpng -z3 %(targetfnq)s; advdef -z3 %(targetfnq)s',
     'rbrito2': 'optipng %(sourcefnq)s -o4 -fix -force %(optipng_gray_flags)s-out %(targetfnq)s; advpng -z4 %(targetfnq)s; advdef -z4 %(targetfnq)s',
     'rbrito3': 'optipng %(sourcefnq)s -o4 -fix -force %(optipng_gray_flags)s-out %(targetfnq)s; advpng -z3 %(targetfnq)s; advpng -z4 %(targetfnq)s; advdef -z3 %(targetfnq)s; advdef -z4 %(targetfnq)s',
+    'rbrito5': 'optipng %(sourcefnq)s -o4 -fix -force %(optipng_gray_flags)s-out %(targetfnq)s; advpng -z3 %(targetfnq)s; advpng -z4 %(targetfnq)s; advdef -z3 %(targetfnq)s; advdef -z4 -i5 %(targetfnq)s',
 
     'pngout2': 'pngout %(pngout_gray_flags)s%(sourcefnq)s %(targetfnq)s; advpng -z4 %(targetfnq)s; advdef -z4 %(targetfnq)s',
     'pngout3': 'pngout %(pngout_gray_flags)s%(sourcefnq)s %(targetfnq)s; advpng -z3 %(targetfnq)s; advdef -z3 %(targetfnq)s; advdef -z4 %(targetfnq)s',
 
-    'pingo': 'pingo -lossless -s9 -verbose=3 %(targetfnq)s',
+    'pingo': 'pingo -lossless -s5 -verbose=3 %(targetfnq)s',
+    'pingo5': 'pingo -lossless -s5 -verbose=3 %(targetfnq)s',
+    'pingo9': 'pingo -lossless -s9 -verbose=3 %(targetfnq)s',
+
+    'pingo9+advdef3': 'pingo -lossless -s9 -verbose=3 %(targetfnq)s; advdef -z3 %(targetfnq)s',
+    'pingo9+advdef4': 'pingo -lossless -s9 -verbose=3 %(sourcefnq)s; zopflipng -y -m --filters=p %(sourcefnq)s %(targetfnq)s; pingo -lossless -s9 -verbose=3 %(targetfnq)s; advdef -z3 -i15 %(targetfnq)s; advdef -z4 -i15 %(targetfnq)s',
 }
 
 def GetVersionSpec(zip_file):
