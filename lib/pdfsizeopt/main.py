@@ -9434,6 +9434,8 @@ IMAGE_OPTIMIZER_CMD_MAP = {
 
     'pingo9+advdef3': 'pingo -lossless -s9 -verbose=3 %(targetfnq)s; advdef -z3 %(targetfnq)s',
     'pingo9+advdef4': 'pingo -lossless -s9 -verbose=3 %(targetfnq)s; advdef -z4 %(targetfnq)s',
+
+    'pingo9+extra': 'pingo -lossless -s9 -verbose=3 %(sourcefnq)s; zopflipng -y -m --filters=p %(sourcefnq)s %(targetfnq)s; pingo -lossless -s9 -verbose=3 %(targetfnq)s; advdef -z3 -i15 %(targetfnq)s; advdef -z4 -i15 %(targetfnq)s',
 }
 
 def GetVersionSpec(zip_file):
