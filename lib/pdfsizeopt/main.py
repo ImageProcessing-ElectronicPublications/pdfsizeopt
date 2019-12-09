@@ -7426,6 +7426,15 @@ class PdfData(object):
                       r'/Device(?:RGB|Gray)[\0\t\n\r\f (<\[/])', colorspace):
         continue
 
+      # Metadata may be an indirect reference and the test after this one
+      # would make the optimizer skip files with metadata. See, for instance:
+      # https://github.com/pts/pdfsizeopt/issues/136
+      #
+      # Therefore, we unset it before testing if there are unresolved
+      # references.
+      if obj.Get('Metadata') is not None:
+        obj.Set('Metadata', None)
+
       # We've already called ResolveReferences on /Filter, /BitsPerComponent,
       # /ColorSpace, /Width, /Height, /Decode, /DecodeParms, /ImageMask.
       #
