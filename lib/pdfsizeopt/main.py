@@ -7295,7 +7295,7 @@ class PdfData(object):
           force_grayscale_obj_nums.add(int(match.group(1)))
 
       if obj.Get('Type') is not None:
-        if obj.Get('Type') != '/XObject':
+        if obj.Get('Type') != '/XObject' and obj.Get('Type') != '/Xobject':
           continue  # Something is wrong with this object, don't touch it.
         obj.Set('Type', None)  # Remove explicit default.
 
